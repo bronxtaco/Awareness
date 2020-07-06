@@ -35,9 +35,9 @@ namespace Awareness
     public partial class Awareness : Form
     {
         static string ND_XMLPATH = Application.StartupPath + @"\necrodancer.xml";
-        static string ND_ITEMPATH = Application.StartupPath.Replace("Crypt of the NecroDancer\\mods\\Awareness", "Crypt of the NecroDancer\\data\\items");
-        static string ND_GUIPATH = Application.StartupPath.Replace("Crypt of the NecroDancer\\mods\\Awareness", "Crypt of the NecroDancer\\data\\gui");
-        static string ND_LEVELPATH = Application.StartupPath.Replace("Crypt of the NecroDancer\\mods\\Awareness", "Crypt of the NecroDancer\\data\\level");
+        static string ND_ITEMPATH = Application.StartupPath.ToLower().Replace("crypt of the necrodancer\\mods\\awareness", "Crypt of the NecroDancer\\data\\items");
+        static string ND_GUIPATH = Application.StartupPath.ToLower().Replace("crypt of the necrodancer\\mods\\awareness", "Crypt of the NecroDancer\\data\\gui");
+        static string ND_LEVELPATH = Application.StartupPath.ToLower().Replace("crypt of the necrodancer\\mods\\awareness", "Crypt of the NecroDancer\\data\\level");
 
         XmlDocument xml = new XmlDocument();
         XmlNode cadence;

@@ -17,8 +17,8 @@ C:\Program Files (x86)\Steam\steamapps\common\Crypt of the NecroDancer\mods\Awar
 
 ### Usage
 
-Open Awareness.exe and launch the game. You can use the Awareness program to make a build by clicking on an item slot and picking the item you want to use in your build. You may also choose a completely random build by clicking the shrine of chance in the corner. Once you are happy with your build, pause the game and select mods > play a mod > awareness
-Your build will load up! If you make a change to the desired build in the awareness program, you will need to reload the mod to see the changes.
+After following the installation instructions, open Awareness.exe and launch the game. You can use the Awareness program to make a build by clicking on an item slot and picking the item you want to use in your build. You may also choose a completely random build by clicking the shrine of chance in the corner. Once you are happy with your build, go back to NecroDancer, pause the game and select mods > play a mod > AWARENESS
+Your build will load up! If you make a change to the desired build in the Awareness program, you will need to reload the mod to see the changes.
 (shoutouts to sillypears for the random build idea)
 
 ### Version History

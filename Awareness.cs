@@ -252,9 +252,6 @@ namespace Awareness
         //-------------------------Update main edge info
         private void updateMainButtons()
         {
-            //sort the equipment
-            //todo
-
             // set all buttons to 'none'
             btn_shovel.Text = "none_" + Slot.Shovel.ToString();
             btn_weapon.Text = "none_" + Slot.Weapon.ToString();
@@ -425,7 +422,7 @@ namespace Awareness
             int drawX = 0;
             if (chanceActive)
             {
-                drawX = imgW;
+                drawX = imgW-1;
             }
             Image bgImage = new Bitmap(chanceImagePath);
             Rectangle bgRect = new Rectangle(0, -35, rectW, rectH);
@@ -435,6 +432,7 @@ namespace Awareness
         //-------------------------Main edge button clicks
         private void clickPanel(Panel pnl)
         {
+            chanceActive = false;
             if (pnl.Visible)
             {
                 pnl.Visible = false;
@@ -650,6 +648,7 @@ namespace Awareness
         //-------------------------Misc button clicks
         private void btn_misc_Click(object sender, EventArgs e)
         {
+            chanceActive = false;
             Button btn = (Button)sender;
             miscBools[btn.Text] = !miscBools[btn.Text];
             updateMiscItem(btn.Text);

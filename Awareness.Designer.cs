@@ -305,6 +305,7 @@
             this.btn_item_familiar_ice_spirit = new System.Windows.Forms.Button();
             this.btn_item_heart_transplant = new System.Windows.Forms.Button();
             this.btn_chance = new System.Windows.Forms.Button();
+            this.btn_ring_becoming = new System.Windows.Forms.Button();
             this.pnl_shovel.SuspendLayout();
             this.pnl_weapon.SuspendLayout();
             this.pnl_body.SuspendLayout();
@@ -2038,6 +2039,7 @@
             // 
             // pnl_ring
             // 
+            this.pnl_ring.Controls.Add(this.btn_ring_becoming);
             this.pnl_ring.Controls.Add(this.btn_ring_piercing);
             this.pnl_ring.Controls.Add(this.btn_ring_mana);
             this.pnl_ring.Controls.Add(this.btn_ring_war);
@@ -2052,7 +2054,7 @@
             this.pnl_ring.Controls.Add(this.btn_ring_charisma);
             this.pnl_ring.Controls.Add(this.btn_ring_gold);
             this.pnl_ring.Controls.Add(this.btn_ring_might);
-            this.pnl_ring.Location = new System.Drawing.Point(826, 217);
+            this.pnl_ring.Location = new System.Drawing.Point(52, 390);
             this.pnl_ring.Name = "pnl_ring";
             this.pnl_ring.Size = new System.Drawing.Size(669, 158);
             this.pnl_ring.TabIndex = 3;
@@ -2121,7 +2123,7 @@
             this.btn_ring_luck.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
             this.btn_ring_luck.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_ring_luck.ForeColor = System.Drawing.Color.Black;
-            this.btn_ring_luck.Location = new System.Drawing.Point(508, 7);
+            this.btn_ring_luck.Location = new System.Drawing.Point(475, 7);
             this.btn_ring_luck.Name = "btn_ring_luck";
             this.btn_ring_luck.Size = new System.Drawing.Size(62, 68);
             this.btn_ring_luck.TabIndex = 0;
@@ -2211,7 +2213,7 @@
             this.btn_ring_shadows.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
             this.btn_ring_shadows.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_ring_shadows.ForeColor = System.Drawing.Color.Black;
-            this.btn_ring_shadows.Location = new System.Drawing.Point(440, 7);
+            this.btn_ring_shadows.Location = new System.Drawing.Point(407, 7);
             this.btn_ring_shadows.Name = "btn_ring_shadows";
             this.btn_ring_shadows.Size = new System.Drawing.Size(62, 68);
             this.btn_ring_shadows.TabIndex = 0;
@@ -2229,7 +2231,7 @@
             this.btn_ring_regeneration.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
             this.btn_ring_regeneration.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_ring_regeneration.ForeColor = System.Drawing.Color.Black;
-            this.btn_ring_regeneration.Location = new System.Drawing.Point(372, 7);
+            this.btn_ring_regeneration.Location = new System.Drawing.Point(339, 7);
             this.btn_ring_regeneration.Name = "btn_ring_regeneration";
             this.btn_ring_regeneration.Size = new System.Drawing.Size(62, 68);
             this.btn_ring_regeneration.TabIndex = 0;
@@ -2247,7 +2249,7 @@
             this.btn_ring_peace.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
             this.btn_ring_peace.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_ring_peace.ForeColor = System.Drawing.Color.Black;
-            this.btn_ring_peace.Location = new System.Drawing.Point(304, 7);
+            this.btn_ring_peace.Location = new System.Drawing.Point(271, 7);
             this.btn_ring_peace.Name = "btn_ring_peace";
             this.btn_ring_peace.Size = new System.Drawing.Size(62, 68);
             this.btn_ring_peace.TabIndex = 0;
@@ -2265,7 +2267,7 @@
             this.btn_ring_charisma.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
             this.btn_ring_charisma.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_ring_charisma.ForeColor = System.Drawing.Color.Black;
-            this.btn_ring_charisma.Location = new System.Drawing.Point(237, 7);
+            this.btn_ring_charisma.Location = new System.Drawing.Point(204, 7);
             this.btn_ring_charisma.Name = "btn_ring_charisma";
             this.btn_ring_charisma.Size = new System.Drawing.Size(62, 68);
             this.btn_ring_charisma.TabIndex = 0;
@@ -2283,7 +2285,7 @@
             this.btn_ring_gold.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
             this.btn_ring_gold.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_ring_gold.ForeColor = System.Drawing.Color.Black;
-            this.btn_ring_gold.Location = new System.Drawing.Point(169, 7);
+            this.btn_ring_gold.Location = new System.Drawing.Point(136, 7);
             this.btn_ring_gold.Name = "btn_ring_gold";
             this.btn_ring_gold.Size = new System.Drawing.Size(62, 68);
             this.btn_ring_gold.TabIndex = 0;
@@ -2301,7 +2303,7 @@
             this.btn_ring_might.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
             this.btn_ring_might.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_ring_might.ForeColor = System.Drawing.Color.Black;
-            this.btn_ring_might.Location = new System.Drawing.Point(101, 7);
+            this.btn_ring_might.Location = new System.Drawing.Point(68, 7);
             this.btn_ring_might.Name = "btn_ring_might";
             this.btn_ring_might.Size = new System.Drawing.Size(62, 68);
             this.btn_ring_might.TabIndex = 0;
@@ -2309,6 +2311,24 @@
             this.btn_ring_might.UseVisualStyleBackColor = true;
             this.btn_ring_might.Click += new System.EventHandler(this.btn_select_ring_Click);
             this.btn_ring_might.Paint += new System.Windows.Forms.PaintEventHandler(this.btnPanel_Paint);
+            // 
+            // btn_ring_becoming
+            // 
+            this.btn_ring_becoming.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btn_ring_becoming.FlatAppearance.BorderSize = 2;
+            this.btn_ring_becoming.FlatAppearance.CheckedBackColor = System.Drawing.Color.Black;
+            this.btn_ring_becoming.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.btn_ring_becoming.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.btn_ring_becoming.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_ring_becoming.ForeColor = System.Drawing.Color.Black;
+            this.btn_ring_becoming.Location = new System.Drawing.Point(543, 7);
+            this.btn_ring_becoming.Name = "btn_ring_becoming";
+            this.btn_ring_becoming.Size = new System.Drawing.Size(62, 68);
+            this.btn_ring_becoming.TabIndex = 1;
+            this.btn_ring_becoming.Text = "ring_becoming";
+            this.btn_ring_becoming.UseVisualStyleBackColor = true;
+            this.btn_ring_becoming.Click += new System.EventHandler(this.btn_select_ring_Click);
+            this.btn_ring_becoming.Paint += new System.Windows.Forms.PaintEventHandler(this.btnPanel_Paint);
             // 
             // pnl_weapon_dagger
             // 
@@ -5613,6 +5633,7 @@
         private System.Windows.Forms.Button btn_item_familiar_ice_spirit;
         private System.Windows.Forms.Button btn_item_heart_transplant;
         private System.Windows.Forms.Button btn_chance;
+        private System.Windows.Forms.Button btn_ring_becoming;
     }
 }
 

@@ -125,6 +125,7 @@
             this.btn_torch_2 = new System.Windows.Forms.Button();
             this.btn_torch_1 = new System.Windows.Forms.Button();
             this.pnl_ring = new System.Windows.Forms.Panel();
+            this.btn_ring_becoming = new System.Windows.Forms.Button();
             this.btn_ring_piercing = new System.Windows.Forms.Button();
             this.btn_ring_mana = new System.Windows.Forms.Button();
             this.btn_ring_war = new System.Windows.Forms.Button();
@@ -305,7 +306,7 @@
             this.btn_item_familiar_ice_spirit = new System.Windows.Forms.Button();
             this.btn_item_heart_transplant = new System.Windows.Forms.Button();
             this.btn_chance = new System.Windows.Forms.Button();
-            this.btn_ring_becoming = new System.Windows.Forms.Button();
+            this.btn_spell2 = new System.Windows.Forms.Button();
             this.pnl_shovel.SuspendLayout();
             this.pnl_weapon.SuspendLayout();
             this.pnl_body.SuspendLayout();
@@ -494,6 +495,24 @@
             this.btn_spell1.UseVisualStyleBackColor = true;
             this.btn_spell1.Click += new System.EventHandler(this.btn_spell1_Click);
             this.btn_spell1.Paint += new System.Windows.Forms.PaintEventHandler(this.btnMain_Paint);
+            // 
+            // btn_spell2
+            // 
+            this.btn_spell2.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btn_spell2.FlatAppearance.BorderSize = 0;
+            this.btn_spell2.FlatAppearance.CheckedBackColor = System.Drawing.Color.Black;
+            this.btn_spell2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.btn_spell2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.btn_spell2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_spell2.ForeColor = System.Drawing.Color.Black;
+            this.btn_spell2.Location = new System.Drawing.Point(759, 186);
+            this.btn_spell2.Name = "btn_spell2";
+            this.btn_spell2.Size = new System.Drawing.Size(66, 68);
+            this.btn_spell2.TabIndex = 0;
+            this.btn_spell2.Text = "SPELL2";
+            this.btn_spell2.UseVisualStyleBackColor = true;
+            this.btn_spell2.Click += new System.EventHandler(this.btn_spell2_Click);
+            this.btn_spell2.Paint += new System.Windows.Forms.PaintEventHandler(this.btnMain_Paint);
             // 
             // btn_charm_luck
             // 
@@ -1456,7 +1475,7 @@
             this.pnl_head.Controls.Add(this.btn_head_crown_of_thorns);
             this.pnl_head.Controls.Add(this.btn_head_blast_helm);
             this.pnl_head.Controls.Add(this.btn_head_helm);
-            this.pnl_head.Location = new System.Drawing.Point(782, 276);
+            this.pnl_head.Location = new System.Drawing.Point(1431, 470);
             this.pnl_head.Name = "pnl_head";
             this.pnl_head.Size = new System.Drawing.Size(669, 158);
             this.pnl_head.TabIndex = 3;
@@ -1672,7 +1691,7 @@
             this.pnl_feet.Controls.Add(this.btn_feet_boots_explorers);
             this.pnl_feet.Controls.Add(this.btn_feet_boots_lead);
             this.pnl_feet.Controls.Add(this.btn_feet_greaves);
-            this.pnl_feet.Location = new System.Drawing.Point(797, 250);
+            this.pnl_feet.Location = new System.Drawing.Point(1420, 486);
             this.pnl_feet.Name = "pnl_feet";
             this.pnl_feet.Size = new System.Drawing.Size(669, 158);
             this.pnl_feet.TabIndex = 4;
@@ -1869,7 +1888,7 @@
             this.pnl_torch.Controls.Add(this.btn_torch_3);
             this.pnl_torch.Controls.Add(this.btn_torch_2);
             this.pnl_torch.Controls.Add(this.btn_torch_1);
-            this.pnl_torch.Location = new System.Drawing.Point(808, 231);
+            this.pnl_torch.Location = new System.Drawing.Point(1402, 502);
             this.pnl_torch.Name = "pnl_torch";
             this.pnl_torch.Size = new System.Drawing.Size(669, 158);
             this.pnl_torch.TabIndex = 3;
@@ -2059,6 +2078,24 @@
             this.pnl_ring.Size = new System.Drawing.Size(669, 158);
             this.pnl_ring.TabIndex = 3;
             this.pnl_ring.Visible = false;
+            // 
+            // btn_ring_becoming
+            // 
+            this.btn_ring_becoming.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btn_ring_becoming.FlatAppearance.BorderSize = 2;
+            this.btn_ring_becoming.FlatAppearance.CheckedBackColor = System.Drawing.Color.Black;
+            this.btn_ring_becoming.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.btn_ring_becoming.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.btn_ring_becoming.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_ring_becoming.ForeColor = System.Drawing.Color.Black;
+            this.btn_ring_becoming.Location = new System.Drawing.Point(543, 7);
+            this.btn_ring_becoming.Name = "btn_ring_becoming";
+            this.btn_ring_becoming.Size = new System.Drawing.Size(62, 68);
+            this.btn_ring_becoming.TabIndex = 1;
+            this.btn_ring_becoming.Text = "ring_becoming";
+            this.btn_ring_becoming.UseVisualStyleBackColor = true;
+            this.btn_ring_becoming.Click += new System.EventHandler(this.btn_select_ring_Click);
+            this.btn_ring_becoming.Paint += new System.Windows.Forms.PaintEventHandler(this.btnPanel_Paint);
             // 
             // btn_ring_piercing
             // 
@@ -2312,24 +2349,6 @@
             this.btn_ring_might.Click += new System.EventHandler(this.btn_select_ring_Click);
             this.btn_ring_might.Paint += new System.Windows.Forms.PaintEventHandler(this.btnPanel_Paint);
             // 
-            // btn_ring_becoming
-            // 
-            this.btn_ring_becoming.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btn_ring_becoming.FlatAppearance.BorderSize = 2;
-            this.btn_ring_becoming.FlatAppearance.CheckedBackColor = System.Drawing.Color.Black;
-            this.btn_ring_becoming.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.btn_ring_becoming.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
-            this.btn_ring_becoming.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_ring_becoming.ForeColor = System.Drawing.Color.Black;
-            this.btn_ring_becoming.Location = new System.Drawing.Point(543, 7);
-            this.btn_ring_becoming.Name = "btn_ring_becoming";
-            this.btn_ring_becoming.Size = new System.Drawing.Size(62, 68);
-            this.btn_ring_becoming.TabIndex = 1;
-            this.btn_ring_becoming.Text = "ring_becoming";
-            this.btn_ring_becoming.UseVisualStyleBackColor = true;
-            this.btn_ring_becoming.Click += new System.EventHandler(this.btn_select_ring_Click);
-            this.btn_ring_becoming.Paint += new System.Windows.Forms.PaintEventHandler(this.btnPanel_Paint);
-            // 
             // pnl_weapon_dagger
             // 
             this.pnl_weapon_dagger.Controls.Add(this.btn_weapon_dagger_electric);
@@ -2555,7 +2574,7 @@
             this.pnl_weapon_spear.Controls.Add(this.btn_weapon_obsidian_spear);
             this.pnl_weapon_spear.Controls.Add(this.btn_weapon_titanium_spear);
             this.pnl_weapon_spear.Controls.Add(this.btn_weapon_spear);
-            this.pnl_weapon_spear.Location = new System.Drawing.Point(846, 205);
+            this.pnl_weapon_spear.Location = new System.Drawing.Point(1445, 450);
             this.pnl_weapon_spear.Name = "pnl_weapon_spear";
             this.pnl_weapon_spear.Size = new System.Drawing.Size(669, 158);
             this.pnl_weapon_spear.TabIndex = 5;
@@ -5296,6 +5315,7 @@
             this.Controls.Add(this.pnl_body);
             this.Controls.Add(this.pnl_weapon);
             this.Controls.Add(this.pnl_shovel);
+            this.Controls.Add(this.btn_spell2);
             this.Controls.Add(this.btn_spell1);
             this.Controls.Add(this.btn_item1);
             this.Controls.Add(this.btn_misc_coupon);
@@ -5634,6 +5654,7 @@
         private System.Windows.Forms.Button btn_item_heart_transplant;
         private System.Windows.Forms.Button btn_chance;
         private System.Windows.Forms.Button btn_ring_becoming;
+        private System.Windows.Forms.Button btn_spell2;
     }
 }
 

@@ -106,6 +106,8 @@ namespace Awareness
         bool chanceActive = false;
         Random rnd = new Random(DateTime.Now.Millisecond);
 
+        int activeSpellSlot = 1;
+
         public Awareness()
         {
             InitializeComponent();
@@ -114,7 +116,7 @@ namespace Awareness
         private void Awareness_Load(object sender, EventArgs e)
         {
             // reset form control settings
-            this.SetBounds(0, 0, 874, 300);
+            this.SetBounds(0, 0, 850, 310);
 
             int pnlX = 80;
             int pnlY = 103;
@@ -261,6 +263,8 @@ namespace Awareness
             btn_torch.Text = "none_" + Slot.Torch.ToString();
             btn_ring.Text = "none_" + Slot.Ring.ToString();
             btn_spell1.Text = "none_" + Slot.Spell.ToString();
+            btn_spell2.Text = "none_" + Slot.Spell.ToString();
+            btn_spell2.Visible = false;
             btn_item1.Text = "none_" + Slot.Item.ToString();
 
             // reset misc
@@ -307,7 +311,15 @@ namespace Awareness
                         btn_ring.Text = item.Name;
                         break;
                     case Slot.Spell:
-                        btn_spell1.Text = item.Name;
+                        btn_spell2.Visible = true;
+                        if (btn_spell1.Text.Contains("none"))
+                        {
+                            btn_spell1.Text = item.Name;
+                        }
+                        else
+                        {
+                            btn_spell2.Text = item.Name;
+                        }
                         break;
                     case Slot.Item:
                         btn_item1.Text = item.Name;
@@ -558,9 +570,23 @@ namespace Awareness
 
         private void btn_spell1_Click(object sender, EventArgs e)
         {
+            activeSpellSlot = 1;
             if (pnl_spell.Visible)
             {
                 updateItem(getItem("none_Spell"), getItem(btn_spell1.Text), pnl_spell);
+            }
+            else
+            {
+                clickPanel(pnl_spell);
+            }
+        }
+
+        private void btn_spell2_Click(object sender, EventArgs e)
+        {
+            activeSpellSlot = 2;
+            if (pnl_spell.Visible)
+            {
+                updateItem(getItem("none_Spell"), getItem(btn_spell2.Text), pnl_spell);
             }
             else
             {
@@ -732,7 +758,22 @@ namespace Awareness
                 XmlAttribute newType = xml.CreateAttribute("type");
                 newType.Value = addItem.Name;
                 newItem.SetAttributeNode(newType);
-                cadence.AppendChild(newItem);
+
+                if (activeSpellSlot == 1 && addItem.Slot == Slot.Spell && !btn_spell2.Text.Contains("none"))
+                {
+                    foreach (XmlNode itemNode in cadence)
+                    {
+                        if (itemNode.Attributes["type"].Value.Contains("spell_"))
+                        {
+                            cadence.InsertBefore(newItem, itemNode);
+                            break;
+                        }
+                    }
+                }
+                else
+                {
+                    cadence.AppendChild(newItem);
+                }
             }
 
             clickPanel(pnl);
@@ -811,7 +852,20 @@ namespace Awareness
         private void btn_select_spell_Click(object sender, EventArgs e)
         {
             Button btn = (Button)sender;
-            updateItem(getItem(btn.Text), getItem(btn_spell1.Text), (Panel)btn.Parent);
+            if (activeSpellSlot == 1)
+            {
+                if (btn.Text != btn_spell2.Text)
+                {
+                    updateItem(getItem(btn.Text), getItem(btn_spell1.Text), (Panel)btn.Parent);
+                }
+            }
+            else if (activeSpellSlot == 2)
+            {
+                if (btn.Text != btn_spell1.Text)
+                {
+                    updateItem(getItem(btn.Text), getItem(btn_spell2.Text), (Panel)btn.Parent);
+                }
+            }
         }
 
         private void btn_select_item_Click(object sender, EventArgs e)

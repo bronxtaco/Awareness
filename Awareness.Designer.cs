@@ -307,6 +307,10 @@
             this.btn_item_heart_transplant = new System.Windows.Forms.Button();
             this.btn_chance = new System.Windows.Forms.Button();
             this.btn_spell2 = new System.Windows.Forms.Button();
+            this.btn_seed = new System.Windows.Forms.Button();
+            this.pnl_seed = new System.Windows.Forms.Panel();
+            this.btn_seedit = new System.Windows.Forms.Button();
+            this.txt_seed = new System.Windows.Forms.TextBox();
             this.pnl_shovel.SuspendLayout();
             this.pnl_weapon.SuspendLayout();
             this.pnl_body.SuspendLayout();
@@ -334,6 +338,7 @@
             this.pnl_item_food.SuspendLayout();
             this.pnl_item_scroll.SuspendLayout();
             this.pnl_item_misc.SuspendLayout();
+            this.pnl_seed.SuspendLayout();
             this.SuspendLayout();
             // 
             // btn_shovel
@@ -495,24 +500,6 @@
             this.btn_spell1.UseVisualStyleBackColor = true;
             this.btn_spell1.Click += new System.EventHandler(this.btn_spell1_Click);
             this.btn_spell1.Paint += new System.Windows.Forms.PaintEventHandler(this.btnMain_Paint);
-            // 
-            // btn_spell2
-            // 
-            this.btn_spell2.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.btn_spell2.FlatAppearance.BorderSize = 0;
-            this.btn_spell2.FlatAppearance.CheckedBackColor = System.Drawing.Color.Black;
-            this.btn_spell2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.btn_spell2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
-            this.btn_spell2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_spell2.ForeColor = System.Drawing.Color.Black;
-            this.btn_spell2.Location = new System.Drawing.Point(759, 186);
-            this.btn_spell2.Name = "btn_spell2";
-            this.btn_spell2.Size = new System.Drawing.Size(66, 68);
-            this.btn_spell2.TabIndex = 0;
-            this.btn_spell2.Text = "SPELL2";
-            this.btn_spell2.UseVisualStyleBackColor = true;
-            this.btn_spell2.Click += new System.EventHandler(this.btn_spell2_Click);
-            this.btn_spell2.Paint += new System.Windows.Forms.PaintEventHandler(this.btnMain_Paint);
             // 
             // btn_charm_luck
             // 
@@ -5276,10 +5263,86 @@
             this.btn_chance.Name = "btn_chance";
             this.btn_chance.Size = new System.Drawing.Size(72, 70);
             this.btn_chance.TabIndex = 22;
-            this.btn_chance.Text = "SPELL1";
+            this.btn_chance.Text = "CHANCE";
             this.btn_chance.UseVisualStyleBackColor = true;
             this.btn_chance.Click += new System.EventHandler(this.btn_chance_Click);
             this.btn_chance.Paint += new System.Windows.Forms.PaintEventHandler(this.btnChance_Paint);
+            // 
+            // btn_spell2
+            // 
+            this.btn_spell2.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btn_spell2.FlatAppearance.BorderSize = 0;
+            this.btn_spell2.FlatAppearance.CheckedBackColor = System.Drawing.Color.Black;
+            this.btn_spell2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.btn_spell2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.btn_spell2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_spell2.ForeColor = System.Drawing.Color.Black;
+            this.btn_spell2.Location = new System.Drawing.Point(759, 186);
+            this.btn_spell2.Name = "btn_spell2";
+            this.btn_spell2.Size = new System.Drawing.Size(66, 68);
+            this.btn_spell2.TabIndex = 0;
+            this.btn_spell2.Text = "SPELL2";
+            this.btn_spell2.UseVisualStyleBackColor = true;
+            this.btn_spell2.Click += new System.EventHandler(this.btn_spell2_Click);
+            this.btn_spell2.Paint += new System.Windows.Forms.PaintEventHandler(this.btnMain_Paint);
+            // 
+            // btn_seed
+            // 
+            this.btn_seed.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btn_seed.FlatAppearance.BorderSize = 0;
+            this.btn_seed.FlatAppearance.CheckedBackColor = System.Drawing.Color.Black;
+            this.btn_seed.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.btn_seed.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.btn_seed.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_seed.ForeColor = System.Drawing.Color.Black;
+            this.btn_seed.Location = new System.Drawing.Point(2, 191);
+            this.btn_seed.Name = "btn_seed";
+            this.btn_seed.Size = new System.Drawing.Size(72, 70);
+            this.btn_seed.TabIndex = 22;
+            this.btn_seed.Text = "SEED";
+            this.btn_seed.UseVisualStyleBackColor = true;
+            this.btn_seed.Click += new System.EventHandler(this.btn_seed_Click);
+            this.btn_seed.Paint += new System.Windows.Forms.PaintEventHandler(this.btnSeed_Paint);
+            // 
+            // pnl_seed
+            // 
+            this.pnl_seed.Controls.Add(this.txt_seed);
+            this.pnl_seed.Controls.Add(this.btn_seedit);
+            this.pnl_seed.Location = new System.Drawing.Point(23, 509);
+            this.pnl_seed.Name = "pnl_seed";
+            this.pnl_seed.Size = new System.Drawing.Size(669, 158);
+            this.pnl_seed.TabIndex = 4;
+            this.pnl_seed.Visible = false;
+            // 
+            // btn_seedit
+            // 
+            this.btn_seedit.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btn_seedit.FlatAppearance.BorderSize = 2;
+            this.btn_seedit.FlatAppearance.CheckedBackColor = System.Drawing.Color.Black;
+            this.btn_seedit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.btn_seedit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.btn_seedit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_seedit.ForeColor = System.Drawing.Color.Black;
+            this.btn_seedit.Location = new System.Drawing.Point(557, 45);
+            this.btn_seedit.Name = "btn_seedit";
+            this.btn_seedit.Size = new System.Drawing.Size(62, 68);
+            this.btn_seedit.TabIndex = 0;
+            this.btn_seedit.Text = "ring_protection";
+            this.btn_seedit.UseVisualStyleBackColor = true;
+            // 
+            // txt_seed
+            // 
+            this.txt_seed.BackColor = System.Drawing.Color.Black;
+            this.txt_seed.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txt_seed.Font = new System.Drawing.Font("Courier New", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_seed.ForeColor = System.Drawing.Color.White;
+            this.txt_seed.Location = new System.Drawing.Point(183, 52);
+            this.txt_seed.MaxLength = 10;
+            this.txt_seed.Name = "txt_seed";
+            this.txt_seed.Size = new System.Drawing.Size(305, 49);
+            this.txt_seed.TabIndex = 1;
+            this.txt_seed.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txt_seed.TextChanged += new System.EventHandler(this.txt_seed_TextChanged);
             // 
             // Awareness
             // 
@@ -5287,6 +5350,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(3782, 717);
+            this.Controls.Add(this.pnl_seed);
+            this.Controls.Add(this.btn_seed);
             this.Controls.Add(this.btn_chance);
             this.Controls.Add(this.pnl_item_misc);
             this.Controls.Add(this.pnl_item_scroll);
@@ -5370,6 +5435,8 @@
             this.pnl_item_food.ResumeLayout(false);
             this.pnl_item_scroll.ResumeLayout(false);
             this.pnl_item_misc.ResumeLayout(false);
+            this.pnl_seed.ResumeLayout(false);
+            this.pnl_seed.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -5655,6 +5722,10 @@
         private System.Windows.Forms.Button btn_chance;
         private System.Windows.Forms.Button btn_ring_becoming;
         private System.Windows.Forms.Button btn_spell2;
+        private System.Windows.Forms.Button btn_seed;
+        private System.Windows.Forms.Panel pnl_seed;
+        private System.Windows.Forms.TextBox txt_seed;
+        private System.Windows.Forms.Button btn_seedit;
     }
 }
 

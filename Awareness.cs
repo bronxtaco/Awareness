@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using System.Xml;
 
@@ -104,7 +105,7 @@ namespace Awareness
 
         string chanceImagePath = (ND_LEVELPATH + @"\shrine_chance.png");
         bool chanceActive = false;
-        Random rnd = new Random(DateTime.Now.Millisecond);
+        string seedImagePath = (ND_LEVELPATH + @"\stairs.png");
 
         int activeSpellSlot = 1;
 
@@ -151,6 +152,8 @@ namespace Awareness
             pnl_item_food.SetBounds(pnlX, pnlY, pnlW, pnlH);
             pnl_item_scroll.SetBounds(pnlX, pnlY, pnlW, pnlH);
             pnl_item_misc.SetBounds(pnlX, pnlY, pnlW, pnlH);
+
+            pnl_seed.SetBounds(pnlX, pnlY, pnlW, pnlH);
 
             xml.Load(ND_XMLPATH);
             XmlNodeList characters = xml.SelectNodes("//necrodancer/characters/character");
@@ -441,6 +444,27 @@ namespace Awareness
             e.Graphics.DrawImage(bgImage, bgRect, drawX, 0, imgW, imgH, GraphicsUnit.Pixel);
         }
 
+        //-------------------------Seed button paint
+        private void btnSeed_Paint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
+
+            Button btn = (Button)sender;
+            Item item = getItem(btn.Text);
+            int rectW = 48;
+            int rectH = 48;
+            int imgW = 24;
+            int imgH = 24;
+            int drawX = 0;
+            if (chanceActive)
+            {
+                drawX = imgW - 1;
+            }
+            Image bgImage = new Bitmap(seedImagePath);
+            Rectangle bgRect = new Rectangle(12, 18, rectW, rectH);
+            e.Graphics.DrawImage(bgImage, bgRect, drawX, 0, imgW, imgH, GraphicsUnit.Pixel);
+        }
+
         //-------------------------Main edge button clicks
         private void clickPanel(Panel pnl)
         {
@@ -480,6 +504,9 @@ namespace Awareness
                 pnl_item_food.Visible = false;
                 pnl_item_scroll.Visible = false;
                 pnl_item_misc.Visible = false;
+
+                pnl_seed.Visible = false;
+
                 pnl.Visible = true;
             }
         }
@@ -680,31 +707,46 @@ namespace Awareness
             updateMiscItem(btn.Text);
         }
 
-        //-------------------------Chance click
-        private void btn_chance_Click(object sender, EventArgs e)
+        //-------------------------Generate random build
+        private void generateBuild(long seed)
         {
+            JavaRng rng = new JavaRng(seed);
+
             // remove all items
             cadence.RemoveAll();
 
             // add one random item for each slot
-            addRandomItem(Slot.Shovel);
-            addRandomItem(Slot.Weapon);
-            addRandomItem(Slot.Body);
-            addRandomItem(Slot.Head);
-            addRandomItem(Slot.Feet);
-            addRandomItem(Slot.Torch);
-            addRandomItem(Slot.Ring);
-            addRandomItem(Slot.Spell);
-            addRandomItem(Slot.Item);
-            addRandomMiscItems();
+            addRandomItem(seed, Slot.Shovel);
+            addRandomItem(seed, Slot.Weapon);
+            addRandomItem(seed, Slot.Body);
+            addRandomItem(seed, Slot.Head);
+            addRandomItem(seed, Slot.Feet);
+            addRandomItem(seed, Slot.Torch);
+            addRandomItem(seed, Slot.Ring);
+            addRandomItem(seed, Slot.Spell);
+            addRandomItem(seed, Slot.Item);
+            addRandomMiscItems(seed);
 
-            chanceActive = true;
             xml.Save(ND_XMLPATH);
             updateMainButtons();
         }
 
-        private void addRandomItem(Slot slot)
+        //-------------------------Chance click
+        private void btn_chance_Click(object sender, EventArgs e)
         {
+            generateBuild(DateTime.Now.Millisecond);
+            chanceActive = true;
+        }
+
+        //-------------------------Seed click
+        private void btn_seed_Click(object sender, EventArgs e)
+        {
+            clickPanel(pnl_seed);
+        }
+
+        private void addRandomItem(long seed, Slot slot)
+        {
+            JavaRng rng = new JavaRng(seed);
             ArrayList slotItems = new ArrayList();
             foreach (Item item in allItems)
             {
@@ -713,7 +755,7 @@ namespace Awareness
                     slotItems.Add(item);
                 }
             }
-            int rndIndex = rnd.Next(slotItems.Count);
+            int rndIndex = rng.NextInt(slotItems.Count);
             Item rndItem = (Item)slotItems[rndIndex];
 
             XmlElement newItem = xml.CreateElement("item");
@@ -723,11 +765,12 @@ namespace Awareness
             cadence.AppendChild(newItem);
         }
 
-        private void addRandomMiscItems()
+        private void addRandomMiscItems(long seed)
         {
+            JavaRng rng = new JavaRng(seed);
             foreach (var miscItem in miscBools.ToArray())
             {
-                if (rnd.Next(4) == 1)
+                if (rng.NextInt(4) == 1)
                 {
                     miscBools[miscItem.Key] = true;
                     updateMiscItem(miscItem.Key);
@@ -872,6 +915,19 @@ namespace Awareness
         {
             Button btn = (Button)sender;
             updateItem(getItem(btn.Text), getItem(btn_item1.Text), (Panel)btn.Parent);
+        }
+
+        private void txt_seed_TextChanged(object sender, EventArgs e)
+        {
+            if (txt_seed.Text != "")
+            {
+                string seedText = Regex.Replace(txt_seed.Text, "[^.0-9]", "");
+                txt_seed.Text = seedText;
+                if (txt_seed.Text != "")
+                {
+                    generateBuild(Int64.Parse(txt_seed.Text));
+                }
+            }
         }
     }
 }

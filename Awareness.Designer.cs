@@ -309,7 +309,6 @@
             this.btn_spell2 = new System.Windows.Forms.Button();
             this.btn_seed = new System.Windows.Forms.Button();
             this.pnl_seed = new System.Windows.Forms.Panel();
-            this.btn_seedit = new System.Windows.Forms.Button();
             this.txt_seed = new System.Windows.Forms.TextBox();
             this.pnl_shovel.SuspendLayout();
             this.pnl_weapon.SuspendLayout();
@@ -5307,28 +5306,11 @@
             // pnl_seed
             // 
             this.pnl_seed.Controls.Add(this.txt_seed);
-            this.pnl_seed.Controls.Add(this.btn_seedit);
             this.pnl_seed.Location = new System.Drawing.Point(23, 509);
             this.pnl_seed.Name = "pnl_seed";
             this.pnl_seed.Size = new System.Drawing.Size(669, 158);
             this.pnl_seed.TabIndex = 4;
             this.pnl_seed.Visible = false;
-            // 
-            // btn_seedit
-            // 
-            this.btn_seedit.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btn_seedit.FlatAppearance.BorderSize = 2;
-            this.btn_seedit.FlatAppearance.CheckedBackColor = System.Drawing.Color.Black;
-            this.btn_seedit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.btn_seedit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
-            this.btn_seedit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_seedit.ForeColor = System.Drawing.Color.Black;
-            this.btn_seedit.Location = new System.Drawing.Point(557, 45);
-            this.btn_seedit.Name = "btn_seedit";
-            this.btn_seedit.Size = new System.Drawing.Size(62, 68);
-            this.btn_seedit.TabIndex = 0;
-            this.btn_seedit.Text = "ring_protection";
-            this.btn_seedit.UseVisualStyleBackColor = true;
             // 
             // txt_seed
             // 
@@ -5725,7 +5707,6 @@
         private System.Windows.Forms.Button btn_seed;
         private System.Windows.Forms.Panel pnl_seed;
         private System.Windows.Forms.TextBox txt_seed;
-        private System.Windows.Forms.Button btn_seedit;
     }
 }
 

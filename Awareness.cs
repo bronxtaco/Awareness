@@ -103,11 +103,13 @@ namespace Awareness
             { "charm_strength", false },
         };
 
+        int activeSpellSlot = 1;
+
         string chanceImagePath = (ND_LEVELPATH + @"\shrine_chance.png");
         bool chanceActive = false;
-        string seedImagePath = (ND_LEVELPATH + @"\stairs.png");
 
-        int activeSpellSlot = 1;
+        string seedImagePath = (ND_LEVELPATH + @"\stairs.png");
+        bool seedActive = false;
 
         public Awareness()
         {
@@ -167,6 +169,10 @@ namespace Awareness
                         cadence = character.SelectSingleNode("//initial_equipment");
                         foreach (XmlNode itemNode in cadence)
                         {
+                            if (itemNode.Name == "cursed")
+                            {
+                                continue;
+                            }
                             Console.WriteLine(itemNode.Attributes["type"].Value);
                         }
                     }
@@ -289,6 +295,10 @@ namespace Awareness
             // update the text and miscBool values
             foreach (XmlNode itemNode in cadence)
             {
+                if (itemNode.Name == "cursed")
+                {
+                    continue;
+                }
                 Item item = getItem(itemNode.Attributes["type"].Value);
                 switch (item.Slot)
                 {
@@ -437,7 +447,7 @@ namespace Awareness
             int drawX = 0;
             if (chanceActive)
             {
-                drawX = imgW-1;
+                drawX = imgW - 1;
             }
             Image bgImage = new Bitmap(chanceImagePath);
             Rectangle bgRect = new Rectangle(0, -35, rectW, rectH);
@@ -456,10 +466,6 @@ namespace Awareness
             int imgW = 24;
             int imgH = 24;
             int drawX = 0;
-            if (chanceActive)
-            {
-                drawX = imgW - 1;
-            }
             Image bgImage = new Bitmap(seedImagePath);
             Rectangle bgRect = new Rectangle(12, 18, rectW, rectH);
             e.Graphics.DrawImage(bgImage, bgRect, drawX, 0, imgW, imgH, GraphicsUnit.Pixel);
@@ -468,6 +474,11 @@ namespace Awareness
         //-------------------------Main edge button clicks
         private void clickPanel(Panel pnl)
         {
+            if (seedActive && pnl != pnl_seed)
+            {
+                return;
+            }
+
             chanceActive = false;
             if (pnl.Visible)
             {
@@ -701,6 +712,10 @@ namespace Awareness
         //-------------------------Misc button clicks
         private void btn_misc_Click(object sender, EventArgs e)
         {
+            if (seedActive)
+            {
+                return;
+            }
             chanceActive = false;
             Button btn = (Button)sender;
             miscBools[btn.Text] = !miscBools[btn.Text];
@@ -712,8 +727,9 @@ namespace Awareness
         {
             JavaRng rng = new JavaRng(seed);
 
-            // remove all items
+            // remove all items, add cursed slots
             cadence.RemoveAll();
+            addSeedCurse();
 
             // add one random item for each slot
             addRandomItem(seed, Slot.Shovel);
@@ -734,6 +750,10 @@ namespace Awareness
         //-------------------------Chance click
         private void btn_chance_Click(object sender, EventArgs e)
         {
+            if (seedActive)
+            {
+                return;
+            }
             generateBuild(DateTime.Now.Millisecond);
             chanceActive = true;
         }
@@ -742,6 +762,46 @@ namespace Awareness
         private void btn_seed_Click(object sender, EventArgs e)
         {
             clickPanel(pnl_seed);
+            seedActive = pnl_seed.Visible;
+            if (!seedActive)
+            {
+                removeSeedCurse();
+            }
+        }
+
+        //-------------------------Seed curse
+        private void addSeedCurse()
+        {
+            var slots = Enum.GetValues(typeof(Slot)).Cast<Slot>();
+            foreach (Slot slot in slots)
+            {
+                if (slot != Slot.Weapon)
+                {
+                    XmlElement newCurse = xml.CreateElement("cursed");
+                    XmlAttribute newType = xml.CreateAttribute("slot");
+                    newType.Value = slot.ToString().ToLower();
+                    newCurse.SetAttributeNode(newType);
+                    cadence.AppendChild(newCurse);
+                }
+            }
+        }
+
+        private void removeSeedCurse()
+        {
+            bool cursedFound;
+            do
+            {
+                cursedFound = false;
+                foreach (XmlNode itemNode in cadence)
+                {
+                    if (itemNode.Name == "cursed")
+                    {
+                        cadence.RemoveChild(itemNode);
+                        cursedFound = true;
+                    }
+                }
+            } while (cursedFound);
+            xml.Save(ND_XMLPATH);
         }
 
         private void addRandomItem(long seed, Slot slot)
@@ -770,7 +830,8 @@ namespace Awareness
             JavaRng rng = new JavaRng(seed);
             foreach (var miscItem in miscBools.ToArray())
             {
-                if (rng.NextInt(4) == 1)
+                int nextRandom = rng.NextInt(4);
+                if (nextRandom == 1)
                 {
                     miscBools[miscItem.Key] = true;
                     updateMiscItem(miscItem.Key);

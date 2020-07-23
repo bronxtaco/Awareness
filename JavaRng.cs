@@ -14,8 +14,8 @@ namespace Awareness
             if (n <= 0)
                 throw new ArgumentOutOfRangeException("n", n, "n must be positive");
 
-            if ((n & -n) == n)  // i.e., n is a power of 2
-                return (int)((n * (long)next(31)) >> 31);
+            /*if ((n & -n) == n)  // i.e., n is a power of 2
+                return (int)((n * (long)next(31)) >> 31);*/
 
             int bits, val;
 

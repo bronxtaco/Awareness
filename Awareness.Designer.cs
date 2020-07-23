@@ -133,6 +133,7 @@
             this.btn_ring_courage = new System.Windows.Forms.Button();
             this.btn_ring_wonder = new System.Windows.Forms.Button();
             this.btn_ring_shielding = new System.Windows.Forms.Button();
+            this.btn_ring_pain = new System.Windows.Forms.Button();
             this.btn_ring_protection = new System.Windows.Forms.Button();
             this.btn_ring_shadows = new System.Windows.Forms.Button();
             this.btn_ring_regeneration = new System.Windows.Forms.Button();
@@ -310,7 +311,6 @@
             this.btn_seed = new System.Windows.Forms.Button();
             this.pnl_seed = new System.Windows.Forms.Panel();
             this.txt_seed = new System.Windows.Forms.TextBox();
-            this.btn_ring_pain = new System.Windows.Forms.Button();
             this.pnl_shovel.SuspendLayout();
             this.pnl_weapon.SuspendLayout();
             this.pnl_body.SuspendLayout();
@@ -2061,7 +2061,7 @@
             this.pnl_ring.Controls.Add(this.btn_ring_charisma);
             this.pnl_ring.Controls.Add(this.btn_ring_gold);
             this.pnl_ring.Controls.Add(this.btn_ring_might);
-            this.pnl_ring.Location = new System.Drawing.Point(37, 295);
+            this.pnl_ring.Location = new System.Drawing.Point(53, 477);
             this.pnl_ring.Name = "pnl_ring";
             this.pnl_ring.Size = new System.Drawing.Size(669, 158);
             this.pnl_ring.TabIndex = 3;
@@ -2211,6 +2211,24 @@
             this.btn_ring_shielding.Click += new System.EventHandler(this.btn_select_ring_Click);
             this.btn_ring_shielding.Paint += new System.Windows.Forms.PaintEventHandler(this.btnPanel_Paint);
             // 
+            // btn_ring_pain
+            // 
+            this.btn_ring_pain.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btn_ring_pain.FlatAppearance.BorderSize = 2;
+            this.btn_ring_pain.FlatAppearance.CheckedBackColor = System.Drawing.Color.Black;
+            this.btn_ring_pain.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.btn_ring_pain.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.btn_ring_pain.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_ring_pain.ForeColor = System.Drawing.Color.Black;
+            this.btn_ring_pain.Location = new System.Drawing.Point(68, 81);
+            this.btn_ring_pain.Name = "btn_ring_pain";
+            this.btn_ring_pain.Size = new System.Drawing.Size(62, 68);
+            this.btn_ring_pain.TabIndex = 0;
+            this.btn_ring_pain.Text = "ring_pain";
+            this.btn_ring_pain.UseVisualStyleBackColor = true;
+            this.btn_ring_pain.Click += new System.EventHandler(this.btn_select_ring_Click);
+            this.btn_ring_pain.Paint += new System.Windows.Forms.PaintEventHandler(this.btnPanel_Paint);
+            // 
             // btn_ring_protection
             // 
             this.btn_ring_protection.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
@@ -2336,24 +2354,6 @@
             this.btn_ring_might.UseVisualStyleBackColor = true;
             this.btn_ring_might.Click += new System.EventHandler(this.btn_select_ring_Click);
             this.btn_ring_might.Paint += new System.Windows.Forms.PaintEventHandler(this.btnPanel_Paint);
-            // 
-            // btn_ring_pain
-            // 
-            this.btn_ring_pain.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btn_ring_pain.FlatAppearance.BorderSize = 2;
-            this.btn_ring_pain.FlatAppearance.CheckedBackColor = System.Drawing.Color.Black;
-            this.btn_ring_pain.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.btn_ring_pain.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
-            this.btn_ring_pain.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_ring_pain.ForeColor = System.Drawing.Color.Black;
-            this.btn_ring_pain.Location = new System.Drawing.Point(68, 81);
-            this.btn_ring_pain.Name = "btn_ring_pain";
-            this.btn_ring_pain.Size = new System.Drawing.Size(62, 68);
-            this.btn_ring_pain.TabIndex = 0;
-            this.btn_ring_pain.Text = "ring_pain";
-            this.btn_ring_pain.UseVisualStyleBackColor = true;
-            this.btn_ring_pain.Click += new System.EventHandler(this.btn_select_ring_Click);
-            this.btn_ring_pain.Paint += new System.Windows.Forms.PaintEventHandler(this.btnPanel_Paint);
             // 
             // pnl_weapon_dagger
             // 
@@ -4166,7 +4166,7 @@
             this.pnl_weapon_cutlass.Controls.Add(this.btn_weapon_obsidian_cutlass);
             this.pnl_weapon_cutlass.Controls.Add(this.btn_weapon_titanium_cutlass);
             this.pnl_weapon_cutlass.Controls.Add(this.btn_weapon_cutlass);
-            this.pnl_weapon_cutlass.Location = new System.Drawing.Point(754, 312);
+            this.pnl_weapon_cutlass.Location = new System.Drawing.Point(23, 286);
             this.pnl_weapon_cutlass.Name = "pnl_weapon_cutlass";
             this.pnl_weapon_cutlass.Size = new System.Drawing.Size(669, 158);
             this.pnl_weapon_cutlass.TabIndex = 18;
@@ -4259,6 +4259,7 @@
             this.btn_weapon_titanium_cutlass.TabIndex = 0;
             this.btn_weapon_titanium_cutlass.Text = "weapon_titanium_cutlass";
             this.btn_weapon_titanium_cutlass.UseVisualStyleBackColor = true;
+            this.btn_weapon_titanium_cutlass.Click += new System.EventHandler(this.btn_select_weapon_Click);
             this.btn_weapon_titanium_cutlass.Paint += new System.Windows.Forms.PaintEventHandler(this.btnPanel_Paint);
             // 
             // btn_weapon_cutlass

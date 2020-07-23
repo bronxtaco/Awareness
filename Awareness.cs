@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlTypes;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Linq;
@@ -743,6 +744,53 @@ namespace Awareness
             addRandomItem(seed, Slot.Item);
             addRandomMiscItems(seed);
 
+            // if seeded...
+                //force strength charm
+                // swap glass jaw, becoming, glass shovel
+            if (seedActive)
+            {
+                miscBools["charm_strength"] = true;
+                updateMiscItem("charm_strength");
+
+                bool problemFound;
+                long modSeed = seed;
+                do
+                {
+                    problemFound = false;
+                    foreach (XmlNode itemNode in cadence)
+                    {
+                        if (itemNode.Name == "cursed")
+                        {
+                            continue;
+                        }
+                        if (itemNode.Attributes["type"].Value == "head_glass_jaw")
+                        {
+                            problemFound = true;
+                            modSeed += 1;
+                            addRandomItem(modSeed, Slot.Head);
+                            cadence.RemoveChild(itemNode);
+                            break;
+                        }
+                        while (itemNode.Attributes["type"].Value == "ring_becoming")
+                        {
+                            problemFound = true;
+                            modSeed += 1;
+                            addRandomItem(modSeed, Slot.Ring);
+                            cadence.RemoveChild(itemNode);
+                            break;
+                        }
+                        while (itemNode.Attributes["type"].Value == "shovel_glass")
+                        {
+                            problemFound = true;
+                            modSeed += 1;
+                            addRandomItem(modSeed, Slot.Shovel);
+                            cadence.RemoveChild(itemNode);
+                            break;
+                        }
+                    }
+                } while (problemFound);
+            }
+
             xml.Save(ND_XMLPATH);
             updateMainButtons();
         }
@@ -849,6 +897,10 @@ namespace Awareness
             }
             foreach (XmlNode itemNode in cadence)
             {
+                if (itemNode.Name == "cursed")
+                {
+                    continue;
+                }
                 if (itemNode.Attributes["type"].Value == remItem.Name)
                 {
                     cadence.RemoveChild(itemNode);
@@ -867,6 +919,10 @@ namespace Awareness
                 {
                     foreach (XmlNode itemNode in cadence)
                     {
+                        if (itemNode.Name == "cursed")
+                        {
+                            continue;
+                        }
                         if (itemNode.Attributes["type"].Value.Contains("spell_"))
                         {
                             cadence.InsertBefore(newItem, itemNode);
@@ -899,6 +955,10 @@ namespace Awareness
             {
                 foreach (XmlNode itemNode in cadence)
                 {
+                    if (itemNode.Name == "cursed")
+                    {
+                        continue;
+                    }
                     if (itemNode.Attributes["type"].Value == miscName)
                     {
                         cadence.RemoveChild(itemNode);
